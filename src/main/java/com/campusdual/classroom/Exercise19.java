@@ -60,7 +60,7 @@ public class Exercise19 {
         int colms = intArrayTri[0][0].length;
         int[][] flattenedArray = new int[rows][colms];
 
-        //Suma os elementos de las mismas posiciones a través de las diferentes capas de la matriz 3D
+        //Suma los elementos de las mismas posiciones a través de las diferentes capas de la matriz 3D
         for (int[][] matrix : intArrayTri) {
             for (int i = 0; i < rows; i++) {
                 for (int j = 0; j < colms; j++) {
