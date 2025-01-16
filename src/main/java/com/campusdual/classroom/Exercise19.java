@@ -56,20 +56,25 @@ public class Exercise19 {
 // De esta forma, partiendo de un array de [3][3][3] se obtiene un array de [3][3].
     public static int[][] flatTridimensionalArray(int[][][] intArrayTri) {
 
+        int layers = intArrayTri.length;
         int rows = intArrayTri[0].length;
-        int colms = intArrayTri[0][0].length;
-        int[][] flattenedArray = new int[rows][colms];
+        int colums = intArrayTri[0][0].length;
 
-        //Suma los elementos de las mismas posiciones a través de las diferentes capas de la matriz 3D
-        for (int[][] matrix : intArrayTri) {
+        int[][] flattArray = new int[rows][colums];
+
+        for (int k = 0; k < layers; k++) {
             for (int i = 0; i < rows; i++) {
-                for (int j = 0; j < colms; j++) {
-                    flattenedArray[i][j] += matrix[i][j];
+                for (int j = 0; j < colums; j++) {
+                    flattArray[i][j] += intArrayTri[k][i][j];
+
                 }
+
             }
 
         }
-        return flattenedArray;
+        return flattArray;
+
+
     }
 
     //Completar y usar el metodo getBidimensionalString() para invocar desde él al metodo stringFlatMatrixRow() ya proporcionado en el ejercicio.
