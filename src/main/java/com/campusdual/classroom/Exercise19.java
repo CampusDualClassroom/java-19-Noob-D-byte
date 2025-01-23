@@ -56,15 +56,16 @@ public class Exercise19 {
 // De esta forma, partiendo de un array de [3][3][3] se obtiene un array de [3][3].
     public static int[][] flatTridimensionalArray(int[][][] intArrayTri) {
 
-        int layers = intArrayTri.length;
+        int depth = intArrayTri.length;
         int rows = intArrayTri[0].length;
-        int colums = intArrayTri[0][0].length;
+        int columns = intArrayTri[0][0].length;
 
-        int[][] flattArray = new int[rows][colums];
 
-        for (int k = 0; k < layers; k++) {
-            for (int i = 0; i < rows; i++) {
-                for (int j = 0; j < colums; j++) {
+        int[][] flattArray = new int[rows][columns];
+
+        for (int i = 0; i < depth; i++) {
+            for (int j = 0; j < rows; j++) {
+                for (int k = 0; k < columns; k++) {
                     flattArray[i][j] += intArrayTri[k][i][j];
 
                 }
@@ -89,7 +90,9 @@ public class Exercise19 {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < intArrayBi.length; i++) {
             sb.append(stringFlatMatrixRow(intArrayBi, i));//Convirte cada fila nun String
-            if (i < intArrayBi.length - 1) sb.append("\n");
+            if (i < intArrayBi.length - 1) {
+                sb.append("\n");
+            }
         }
         return sb.toString();
     }
@@ -113,8 +116,8 @@ public class Exercise19 {
     //Crear un Array unidimensional de tipo entero e inicializarlo en el metodo createAndPopulateUnidimensionalArray().
 // Hacer lo mismo para un array bidimensional y el tridimensional, también de tipo entero, respectivamente.
     public static int[] createAndPopulateUnidimensionalArray(int columns) {
-        int[] uniArray = new int[5];
-        for (int i = 0; i < uniArray.length; i++) {
+        int[] uniArray = new int[columns];
+        for (int i = 0; i < columns; i++) {
             uniArray[i] = i + 1;// i + 1  para que empiece desde 1.
         }
         return uniArray;
@@ -127,6 +130,9 @@ public class Exercise19 {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 intArrayBi[i][j] = value++;//Asigna valores consecutivos
+
+                //Alternativas ingeniosas
+                //intArrayBi[i][j] = (i * columns) + j + 1;
             }
         }
         return intArrayBi;
@@ -140,6 +146,9 @@ public class Exercise19 {
             for (int j = 0; j < rows; j++) {
                 for (int k = 0; k < columns; k++) {
                     intArrayTri[i][j][k] = value++;
+
+                    //Alternativas ingeniosas
+                    //intArrayTri[i][j][k] = (k * rows * columns) + (i * depth) + i +  1;
                 }
             }
         }
